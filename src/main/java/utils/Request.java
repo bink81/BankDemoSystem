@@ -2,7 +2,7 @@ package utils;
 
 public class Request {
 	private long accountId;
-	private long balanceChange;
+	private long withdrawalAmount;
 	
 	public long getAccountId() {
 		return accountId;
@@ -10,10 +10,10 @@ public class Request {
 	public void setAccountId(long accountId) {
 		this.accountId = accountId;
 	}
-	public long getBalanceChange() {
-		return balanceChange;
+	public long getWithdrawalAmount() {
+		return withdrawalAmount;
 	}
-	public void setBalanceChange(long balanceChange) {
-		this.balanceChange = balanceChange;
+	public void setWithdrawalAmount(long withdrawalAmount) {
+		this.withdrawalAmount = withdrawalAmount;
 	}
 }

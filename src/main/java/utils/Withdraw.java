@@ -8,7 +8,7 @@ import com.marzeta.bank.model.Account;
 import com.marzeta.bank.model.AccountHistory;
 
 public class Withdraw implements Transaction {
-  // @Autowired
+	// @Autowired
 	private AccountDao accountDao;
 	private AccountHistoryDao accountHistoryDao;
 	
@@ -18,14 +18,15 @@ public class Withdraw implements Transaction {
 		AccountHistory accountHistory = new AccountHistory();
 		accountHistory.setAccountId(req.getAccountId());
 		accountHistory.setDate(new Date()); // TODO: should be taken from dB!
-		accountHistory.setText("Withdrawing " + req.getBalanceChange());
+		accountHistory.setText("Withdrawing: " + req.getWithdrawalAmount());
 		accountHistoryDao.save(accountHistory);
 		
 		Response resp = new Response();
-		if (account.getBalance() > account.getMinBalance()) {
-			account.setBalance(account.getBalance() + req.getBalanceChange());
+		long newBalance = account.getBalance() - req.getWithdrawalAmount();
+		if (newBalance > account.getMinBalance()) {
+			account.setBalance(newBalance);
 			resp.setSuccess(true);
-			accountDao.save(account);
+			accountDao.update(account);
 		}
 		
 		return resp;
