@@ -47,7 +47,7 @@ public class Fraction {
 	public Fraction divide(Fraction other) {
 		throwExceptionIfNull(other);
 		if (other.numerator == BigInteger.ZERO) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("You must not divide by zero!");
 		}
 		return new Fraction(numerator.multiply(other.denominator),
 				denominator.multiply(other.numerator));
@@ -61,7 +61,7 @@ public class Fraction {
 	
 	private void throwExceptionIfNull(Fraction other) {
 		if (other == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Parameter must not be null!");
 		}
 	}
 
