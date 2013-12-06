@@ -100,4 +100,12 @@ public class Fraction {
 	public String toString() {
 		return "Fraction [" + numerator + "/" + denominator + "]";
 	}
+
+	public BigInteger getNumerator() {
+		return numerator;
+	}
+
+	public BigInteger getDenominator() {
+		return denominator;
+	}
 }
