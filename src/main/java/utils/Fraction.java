@@ -20,6 +20,10 @@ public class Fraction {
 	}
 	
 	public Fraction(BigInteger numerator, BigInteger denominator) {
+		if (denominator.equals(BigInteger.ZERO)) {
+			throw new IllegalArgumentException("You must not divide by zero!");
+		}
+		
 		// move sign to the numerator
 		if (denominator.compareTo(BigInteger.ZERO) < 0) {
 			numerator = numerator.negate();
@@ -46,9 +50,6 @@ public class Fraction {
 	
 	public Fraction divide(Fraction other) {
 		throwExceptionIfNull(other);
-		if (other.numerator == BigInteger.ZERO) {
-			throw new IllegalArgumentException("You must not divide by zero!");
-		}
 		return new Fraction(numerator.multiply(other.denominator),
 				denominator.multiply(other.numerator));
 	}
